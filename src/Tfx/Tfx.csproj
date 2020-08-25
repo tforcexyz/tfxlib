@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
+    <RootNamespace>Xyz.TForce</RootNamespace>
+    <Authors>T-Force Xyz</Authors>
+    <Company>T-Force Xyz</Company>
+    <Copyright>T-Force Xyz</Copyright>
+    <Product>T-Force Base Library</Product>
+    <Description>T-Force Base Library</Description>
+    <PackageLicenseUrl>https://github.com/tforcexyz/tfx/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageReleaseNotes>https://github.com/tforcexyz/tfx/blob/master/RELEASE</PackageReleaseNotes>
+    <PackageIconUrl>https://github.com/tforcexyz/tfx/tforcexyz.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/tforcexyz/tfx/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/tforcexyz/tfx/</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <SignAssembly>false</SignAssembly>
+    <DelaySign>false</DelaySign>
+    <Version>1.0.0.0</Version>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net45' Or '$(TargetFramework)' == 'net46' Or '$(TargetFramework)' == 'net47'">
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="System.ComponentModel" Version="4.3.0" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.4.1" />
+    <PackageReference Include="System.Reflection.Emit" Version="4.3.0" />
+    <PackageReference Include="System.Reflection.Emit.Lightweight" Version="4.3.0" />
+  </ItemGroup>
+
+</Project>
