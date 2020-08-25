@@ -14,6 +14,8 @@
 // limitations under the License.
 
 using System.Collections.Generic;
+using System.Linq.Expressions;
+using System.Reflection;
 using Xyz.TForce.Text;
 
 namespace System
@@ -593,6 +595,100 @@ namespace System
       resultChars.Reverse();
       string resultString = new string(resultChars.ToArray());
       return resultString;
+    }
+    #endregion
+
+    #region flag <- number
+    /// <summary>
+    /// Convert a number into boolean properties of a class specified in mapping dictionary
+    /// </summary>
+    /// <typeparam name="TFlag">Type of the flag</typeparam>
+    /// <param name="number">Value of the mapping in integer</param>
+    /// <param name="mapping">Dictionary of 1-based column mapping. The counting direction is from right to left</param>
+    /// <returns>New instance of flag</returns>
+    public static TFlag ToFlag<TFlag>(this int number, IDictionary<int, Expression<Func<TFlag, bool>>> mapping)
+        where TFlag : new()
+    {
+      TFlag flag = Activator.CreateInstance<TFlag>();
+      MapFlag(number, flag, mapping);
+      return flag;
+    }
+
+    /// <summary>
+    /// Convert a number into boolean properties of a class specified in mapping dictionary
+    /// </summary>
+    /// <typeparam name="TFlag">Type of the flag</typeparam>
+    /// <param name="number">Value of the mapping in long integer</param>
+    /// <param name="mapping">Dictionary of 1-based column mapping. The counting direction is from right to left</param>
+    /// <returns>New instance of flag</returns>
+    public static TFlag ToFlag<TFlag>(this long number, IDictionary<long, Expression<Func<TFlag, bool>>> mapping)
+        where TFlag : new()
+    {
+      TFlag flag = Activator.CreateInstance<TFlag>();
+      MapFlag(number, flag, mapping);
+      return flag;
+    }
+
+    /// <summary>
+    /// Map a number into boolean properties of a class specified in mapping dictionary
+    /// </summary>
+    /// <typeparam name="TFlag">Type of the flag</typeparam>
+    /// <param name="number">Value of the mapping in integer</param>
+    /// <param name="instance">Current instance of flag class</param>
+    /// <param name="mapping">Dictionary of 1-based column mapping. The counting direction is from right to left</param>
+    public static void MapFlag<TFlag>(this int number, TFlag instance, IDictionary<int, Expression<Func<TFlag, bool>>> mapping)
+    {
+      int remain = number;
+      int digit = 1;
+      while (remain > 0)
+      {
+        int mod = remain % 2;
+        Expression<Func<TFlag, bool>> expression = mapping.SafeGetValue(digit);
+        if (expression != null)
+        {
+          if (mod == 0)
+          {
+            instance.SetPropertyValue(expression, false);
+          }
+          else
+          {
+            instance.SetPropertyValue(expression, true);
+          }
+        }
+        remain /= 2;
+        digit++;
+      }
+    }
+
+    /// <summary>
+    /// Map a number into boolean properties of a class specified in mapping dictionary
+    /// </summary>
+    /// <typeparam name="TFlag">Type of the flag</typeparam>
+    /// <param name="number">Value of the mapping in long integer</param>
+    /// <param name="instance">Current instance of flag class</param>
+    /// <param name="mapping">Dictionary of 1-based column mapping. The counting direction is from right to left</param>
+    public static void MapFlag<TFlag>(this long number, TFlag instance, IDictionary<long, Expression<Func<TFlag, bool>>> mapping)
+    {
+      long remain = number;
+      int digit = 1;
+      while (remain > 0)
+      {
+        long mod = remain % 2;
+        Expression<Func<TFlag, bool>> expression = mapping.SafeGetValue(digit);
+        if (expression != null)
+        {
+          if (mod == 0)
+          {
+            instance.SetPropertyValue(expression, false);
+          }
+          else
+          {
+            instance.SetPropertyValue(expression, true);
+          }
+        }
+        remain /= 2;
+        digit++;
+      }
     }
     #endregion
 
