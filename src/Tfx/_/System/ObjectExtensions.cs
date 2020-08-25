@@ -26,7 +26,7 @@ namespace System
     /// </summary>
     /// <param name="object"></param>
     /// <returns></returns>
-    public static bool Truthy(this object @object)
+    public static bool IsTruthy(this object @object)
     {
       if (@object == null)
       {

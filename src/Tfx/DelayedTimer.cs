@@ -59,7 +59,10 @@ namespace Xyz.TForce
 
     protected void DelayedActionHandler(object sender, ElapsedEventArgs e)
     {
-      Action?.Invoke(_augments);
+      if (Action != null)
+      {
+        Action.Invoke(_augments);
+      }
     }
   }
 }

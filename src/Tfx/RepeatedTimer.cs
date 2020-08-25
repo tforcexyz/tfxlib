@@ -60,7 +60,10 @@ namespace Xyz.TForce
 
     protected void IntervalizedActionHandler(object sender, ElapsedEventArgs e)
     {
-      Action?.Invoke(_augments);
+      if (Action != null)
+      {
+        Action.Invoke(_augments);
+      }
     }
   }
 }
