@@ -10,7 +10,7 @@
     <copyright>T-Force Xyz</copyright>
     <licenseUrl>https://github.com/tforcexyz/tfxlib/blob/master/LICENSE</licenseUrl>
     <releaseNotes>https://github.com/tforcexyz/tfxlib/blob/master/RELEASE</releaseNotes>
-    <iconUrl>https://github.com/tforcexyz/tfxlib/tforcexyz.png</iconUrl>
+    <iconUrl>https://github.com/tforcexyz/tfxlib/blob/master/package_icon.png</iconUrl>
     <projectUrl>https://github.com/tforcexyz/tfxlib/</projectUrl>
     <repository url="https://github.com/tforcexyz/tfxlib/" type="git" />
     <requireLicenseAcceptance>false</requireLicenseAcceptance>

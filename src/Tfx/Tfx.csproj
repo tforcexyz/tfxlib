@@ -10,7 +10,7 @@
     <Description>TFX Library: Base</Description>
     <PackageLicenseUrl>https://github.com/tforcexyz/tfxlib/blob/master/LICENSE</PackageLicenseUrl>
     <PackageReleaseNotes>https://github.com/tforcexyz/tfxlib/blob/master/RELEASE</PackageReleaseNotes>
-    <PackageIconUrl>https://github.com/tforcexyz/tfxlib/tforcexyz.png</PackageIconUrl>
+    <PackageIconUrl>https://github.com/tforcexyz/tfxlib/blob/master/package_icon.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/tforcexyz/tfxlib/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/tforcexyz/tfxlib/</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
