@@ -6,13 +6,13 @@
     <Authors>T-Force Xyz</Authors>
     <Company>T-Force Xyz</Company>
     <Copyright>T-Force Xyz</Copyright>
-    <Product>T-Force Base Library</Product>
-    <Description>T-Force Base Library</Description>
-    <PackageLicenseUrl>https://github.com/tforcexyz/tfx/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageReleaseNotes>https://github.com/tforcexyz/tfx/blob/master/RELEASE</PackageReleaseNotes>
-    <PackageIconUrl>https://github.com/tforcexyz/tfx/tforcexyz.png</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/tforcexyz/tfx/</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/tforcexyz/tfx/</RepositoryUrl>
+    <Product>TFX Library: Base</Product>
+    <Description>TFX Library: Base</Description>
+    <PackageLicenseUrl>https://github.com/tforcexyz/tfxlib/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageReleaseNotes>https://github.com/tforcexyz/tfxlib/blob/master/RELEASE</PackageReleaseNotes>
+    <PackageIconUrl>https://github.com/tforcexyz/tfxlib/tforcexyz.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/tforcexyz/tfxlib/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/tforcexyz/tfxlib/</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <SignAssembly>false</SignAssembly>
@@ -21,12 +21,12 @@
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
-  <PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>$(StrongNameKeyFilePath)</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'net45' Or '$(TargetFramework)' == 'net46' Or '$(TargetFramework)' == 'net47'">
+  <ItemGroup Condition="'$(TargetFramework)' == 'net45'">
     <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
 
