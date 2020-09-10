@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Tfx</id>
-    <version>1.0.0-rc2</version>
+    <version>1.0.0</version>
     <title>T-Force Base Library</title>
     <description>T-Force Base Library</description>
     <authors>T-Force Xyz</authors>
