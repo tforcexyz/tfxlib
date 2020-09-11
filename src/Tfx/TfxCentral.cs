@@ -29,7 +29,7 @@ namespace Xyz.TForce
   public static class TfxCentral
   {
 
-    private static IIocRegistrar s_iocRegistrar;
+    private static IRegistrar s_iocRegistrar;
 
     /// <summary>
     /// Initialize default variables
@@ -124,7 +124,7 @@ namespace Xyz.TForce
       {
         // Initialize default dependency injection engine
         // Scan for internal assemblies only
-        s_iocRegistrar = new DefaultIocRegistrar();
+        s_iocRegistrar = new DefaultRegistrar();
         Assembly[] loadedAssemblies = AppDomain.CurrentDomain.GetAssemblies();
         Type iocModuleInterface = typeof(IIocModule);
         s_iocRegistrar.RegisterModule<TfxModule>();
@@ -151,7 +151,7 @@ namespace Xyz.TForce
     /// Initialize the TFX platform's if not and return configured Ioc container
     /// </summary>
     /// <returns></returns>
-    public static IIocRegistrar DefaultIoc()
+    public static IRegistrar DefaultIoc()
     {
       Initialize();
       return s_iocRegistrar;

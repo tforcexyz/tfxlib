@@ -13,14 +13,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace Xyz.TForce.Ioc
+namespace Xyz.TForce.DependencyInjection
 {
 
-  public enum LifetimeScope
+  public class RegisterOptions
   {
-    Default,
-    Singleton,
-    Scope,
-    Transient
+
+    public LifetimeScope LifetimeScope { get; set; }
   }
 }

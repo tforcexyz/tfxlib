@@ -17,18 +17,18 @@ using System;
 using System.Collections.Generic;
 using LightInject;
 
-namespace Xyz.TForce.Ioc
+namespace Xyz.TForce.DependencyInjection
 {
 
   /// <summary>
   /// Default implementation IoC registrar for internal use. Currently using DryIoc
   /// </summary>
-  public class DefaultIocRegistrar : IIocRegistrar
+  public class DefaultRegistrar : IRegistrar
   {
 
     private readonly ServiceContainer _container;
 
-    public DefaultIocRegistrar()
+    public DefaultRegistrar()
     {
       _container = new ServiceContainer();
     }
@@ -66,31 +66,31 @@ namespace Xyz.TForce.Ioc
       _ = _container.Register(tRegister, tResolve);
     }
 
-    public void RegisterModule<TModule>() where TModule : IIocModule
+    public void RegisterModule<TModule>() where TModule : IModule
     {
       IServiceContainer moduleContainer = new ServiceContainer();
-      _ = moduleContainer.RegisterInstance<IIocRegistrar>(this);
+      _ = moduleContainer.RegisterInstance<IRegistrar>(this);
       _ = moduleContainer.Register<TModule>();
       TModule module = moduleContainer.GetInstance<TModule>();
       module.Initialize(this);
     }
 
-    public void RegisterModule(IIocModule module)
+    public void RegisterModule(IModule module)
     {
       module.Initialize(this);
     }
 
     public void RegisterModule(Type tModule)
     {
-      Type iocModuleInterface = typeof(IIocModule);
+      Type iocModuleInterface = typeof(IModule);
       if (!iocModuleInterface.IsAssignableFrom(tModule))
       {
         throw new InvalidOperationException();
       }
       IServiceContainer moduleContainer = new ServiceContainer();
-      _ = moduleContainer.RegisterInstance<IIocRegistrar>(this);
-      _ = moduleContainer.Register(typeof(IIocModule), tModule);
-      IIocModule module = moduleContainer.GetInstance<IIocModule>();
+      _ = moduleContainer.RegisterInstance<IRegistrar>(this);
+      _ = moduleContainer.Register(typeof(IModule), tModule);
+      IModule module = moduleContainer.GetInstance<IModule>();
       module.Initialize(this);
     }
 

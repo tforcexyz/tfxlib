@@ -16,10 +16,10 @@
 using System;
 using System.Collections.Generic;
 
-namespace Xyz.TForce.Ioc
+namespace Xyz.TForce.DependencyInjection
 {
 
-  public interface IIocRegistrar
+  public interface IRegistrar
   {
 
     object GetContainer();
@@ -38,9 +38,9 @@ namespace Xyz.TForce.Ioc
     void Register(Type tRegister, Type tResolve, RegisterOptions options = null);
 
     void RegisterModule<TModule>()
-      where TModule : IIocModule;
+      where TModule : IModule;
 
-    void RegisterModule(IIocModule instance);
+    void RegisterModule(IModule instance);
 
     void RegisterModule(Type tModule);
 

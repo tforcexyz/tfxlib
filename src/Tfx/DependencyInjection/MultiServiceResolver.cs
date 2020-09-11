@@ -13,14 +13,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace Xyz.TForce.Ioc
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Xyz.TForce.DependencyInjection
 {
 
-  public enum InstanceActivationMode
+  internal static class MultiServiceResolver
   {
-    Default,
-    Singleton,
-    SinglePerResolve,
-    MultiInstance
+
+    internal static TService[] GetCombined<TService>(IList<TService> items, IRegistrar resolver = null) where TService : class
+    {
+      if (resolver == null)
+      {
+        resolver = new DefaultRegistrar();
+      }
+      IEnumerable<TService> services = resolver.ResolveMany<TService>();
+      return services.Concat(items).ToArray();
+    }
   }
 }

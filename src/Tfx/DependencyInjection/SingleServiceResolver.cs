@@ -16,7 +16,7 @@
 using System;
 using System.Globalization;
 
-namespace Xyz.TForce.Ioc
+namespace Xyz.TForce.DependencyInjection
 {
 
   internal class SingleServiceResolver<TService>
@@ -26,7 +26,7 @@ namespace Xyz.TForce.Ioc
     private readonly Lazy<TService> _currentValueFromResolver;
     private readonly Func<TService> _currentValueThunk;
     private readonly TService _defaultValue;
-    private readonly Func<IIocRegistrar> _resolverThunk;
+    private readonly Func<IRegistrar> _resolverThunk;
     private readonly string _callerMethodName;
 
     public SingleServiceResolver(Func<TService> currentValueThunk, TService defaultValue, string callerMethodName)
@@ -47,7 +47,7 @@ namespace Xyz.TForce.Ioc
       _callerMethodName = callerMethodName;
     }
 
-    internal SingleServiceResolver(Func<TService> staticAccessor, TService defaultValue, IIocRegistrar resolver, string callerMethodName)
+    internal SingleServiceResolver(Func<TService> staticAccessor, TService defaultValue, IRegistrar resolver, string callerMethodName)
         : this(staticAccessor, defaultValue, callerMethodName)
     {
       if (resolver != null)

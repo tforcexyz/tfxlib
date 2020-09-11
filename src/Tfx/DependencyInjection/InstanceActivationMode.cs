@@ -13,12 +13,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace Xyz.TForce.Ioc
+namespace Xyz.TForce.DependencyInjection
 {
 
-  public interface IIocModule
+  public enum InstanceActivationMode
   {
-
-    void Initialize(IIocRegistrar builder);
+    Default,
+    Singleton,
+    SinglePerResolve,
+    MultiInstance
   }
 }

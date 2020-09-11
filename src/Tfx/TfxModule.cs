@@ -21,7 +21,7 @@ namespace Xyz.TForce
   public class TfxModule : IIocModule
   {
 
-    public void Initialize(IIocRegistrar builder)
+    public void Initialize(IRegistrar builder)
     {
     }
   }

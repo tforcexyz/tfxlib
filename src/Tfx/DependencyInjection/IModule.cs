@@ -13,23 +13,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Xyz.TForce.Ioc
+namespace Xyz.TForce.DependencyInjection
 {
 
-  internal static class MultiServiceResolver
+  public interface IModule
   {
 
-    internal static TService[] GetCombined<TService>(IList<TService> items, IIocRegistrar resolver = null) where TService : class
-    {
-      if (resolver == null)
-      {
-        resolver = new DefaultIocRegistrar();
-      }
-      IEnumerable<TService> services = resolver.ResolveMany<TService>();
-      return services.Concat(items).ToArray();
-    }
+    void Initialize(IRegistrar builder);
   }
 }
