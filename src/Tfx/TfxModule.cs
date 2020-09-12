@@ -13,12 +13,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using Xyz.TForce.Ioc;
+using Xyz.TForce.DependencyInjection;
 
 namespace Xyz.TForce
 {
 
-  public class TfxModule : IIocModule
+  public class TfxModule : IModule
   {
 
     public void Initialize(IRegistrar builder)

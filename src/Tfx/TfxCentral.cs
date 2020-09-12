@@ -17,8 +17,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Xyz.TForce.DependencyInjection;
 using Xyz.TForce.Diagnostics;
-using Xyz.TForce.Ioc;
 
 namespace Xyz.TForce
 {
@@ -126,7 +126,7 @@ namespace Xyz.TForce
         // Scan for internal assemblies only
         s_iocRegistrar = new DefaultRegistrar();
         Assembly[] loadedAssemblies = AppDomain.CurrentDomain.GetAssemblies();
-        Type iocModuleInterface = typeof(IIocModule);
+        Type iocModuleInterface = typeof(IModule);
         s_iocRegistrar.RegisterModule<TfxModule>();
         foreach (Assembly assembly in loadedAssemblies)
         {
