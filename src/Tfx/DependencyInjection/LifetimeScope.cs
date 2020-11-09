@@ -20,7 +20,7 @@ namespace Xyz.TForce.DependencyInjection
   {
     Default,
     Singleton,
-    Scope,
+    Scoped,
     Transient
   }
 }
